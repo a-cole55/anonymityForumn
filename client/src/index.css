@@ -1,0 +1,222 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Lato';
+  background-color:#9d9cff;
+  color:#000;
+}
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+#root{
+  width:100%;
+}
+.App{
+  width: 100%;
+}
+h1{
+  text-align: center;
+  font-family: 'Reenie Beanie';
+  font-size: 5rem;
+  letter-spacing: 0.05em;
+}
+h2 {
+  font-weight: bold;
+  font-size: 2rem;
+
+}
+ 
+p {
+  font-size: 2.5rem;
+  font-weight: normal;
+  font-family: 'Reenie Beanie';
+}
+
+.posts{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width:100%;
+}
+.stickyNotes{
+  margin:2em;
+  width:28%;
+  height: 16em;
+  text-align: center;
+  color:#000;
+  background:#ffc;
+  display:block;
+  padding:1em;
+  box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+  transform: rotate(-6deg);
+}
+
+.stickyNoteFooter {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 2em;
+  width: 80%;
+  position:fixed;
+  bottom: 1em;
+}
+
+.stickyNoteFooter h6{
+  display: inline-block;
+}
+
+.stickyNotes:nth-child(even){
+  transform:rotate(4deg);
+  position:relative;
+  top:5px;
+  background-color: #fcbcdc;
+}
+.stickyNotes:nth-child(3n){
+  transform:rotate(-3deg);
+  position:relative;
+  top:-5px;
+}
+.stickyNotes:nth-child(5n){
+  transform:rotate(-5deg);
+  position:relative;
+  top:-10px;
+  background-color: #ffcf9c;
+}
+
+.App, .addPost{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.addPost{
+  color:#000;
+  background-color: 
+  #ffcf9c;
+  display:block;
+  padding:1em;
+  width:30em;
+  height: 20em;
+  margin:1%;
+  padding:5%;
+  box-shadow: 5px 5px 7px rgba(33,33,33,.7); 
+  transform: rotate(-1deg);
+}
+
+input{
+  background-color:	#ffcf9c;
+  border:none;
+  width:100%;
+  height: 2em;
+}
+
+textarea::-webkit-scrollbar{
+  display: none;
+}
+
+textarea{
+  font-family: 'Reenie Beanie';
+  background-color: 
+  #ffcf9c;
+  font-size: 2rem;
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.post{
+  height:300px;
+}
+.post button{
+  display:block;
+}
+h6{
+  margin: 1% 0;
+}
+
+.description{
+  width:100%;
+  height: 180px;
+  border: none;
+  overflow:scroll;
+  padding:0;
+}
+button{
+  display: block;
+  margin-top:10px;
+  width:5em;
+  height:2em;
+  border-radius:3px;
+  border:none;
+  cursor: pointer;
+  box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+}
+.openModalBtn{
+  width:7em;
+  height:2.25em;
+  background-color: 	#ffcf9c;
+  font: bold 1.2rem 'Lato';
+  text-transform: uppercase;
+}
+
+.modalBG{
+  top: 0;
+  bottom:0;
+  left:0;
+  right:0;
+  background-color: rgba(33, 33, 33, .4);
+  position:fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.modalContainer {
+  width:800px;
+  height: 600px;
+  border-radius: 12px;
+  background-color: #ffc;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
+}
+.closeBtn{
+  display: flex;
+  justify-content: flex-end;
+  width: 90%;
+}
+.header{
+  margin: 0 0 1em 0;
+  display: flex;
+  width: 90%;
+  justify-content: center;
+}
+.title {
+  display: inline-block;
+  text-align: center;
+  margin-top: 10px;
+  font: bold 3rem 'Reenie Beanie';
+}
+.CloseIcon {
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+
+.buttons{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+.buttons button{
+  margin-right: 25px;
+}
