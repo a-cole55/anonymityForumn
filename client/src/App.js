@@ -10,7 +10,7 @@ function App() {
 
   const updateLikes = (id, like) => {
     const newLike = like + 1;
-    // alert(id, newLike)
+
     Axios.put("http://localhost:4000/addLike", {newLike: newLike, id: id}).then(() => {
       setListofPosts(listOfPosts.map((val) => {
         return val._id === id ? {_id: id, name: val.name, postDescription: val.postDescription, like: newLike} : val
