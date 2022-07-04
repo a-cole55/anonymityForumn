@@ -21,12 +21,11 @@ mongoose.connect(
 app.post('/addPost', async (req, res) => {
     const name = req.body.name;
     const description = req.body.description;
-    const title = req.body.title;
-    const date= req.body.date;
+    const like = req.body.like;
 
-    const post = new PostModel({name: name, title: title, postDescription: description, fullDate:date});
+    const post = new PostModel({name: name, postDescription: description, like: like});
     await post.save()
-    res.send("Inserted Data")
+    res.send(post)
 }), 
 
 app.get("/read", async (req, res) => {
@@ -38,6 +37,22 @@ app.get("/read", async (req, res) => {
         }
     });
 })
+
+app.put("/addLike", async (req, res) => {
+    const newLike = req.body.newLike;
+    const id = req.body.id;
+
+    try {
+        await PostModel.findById(id, (error, postToUpdate) => {
+            postToUpdate.like = Number(newLike);
+            postToUpdate.save();
+        }).clone() 
+    } catch(err) {
+        console.log(err);
+    }
+    
+    res.send("updated");
+});
 
 app.listen(4000, () => {
     console.log("running on port 4000")

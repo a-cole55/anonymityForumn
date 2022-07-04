@@ -59,11 +59,16 @@ p {
 .stickyNoteFooter {
   display:flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
   margin: 0 2em;
   width: 80%;
   position:fixed;
   bottom: 1em;
+}
+.stickyNoteFooter span{
+  font-size:1.25rem;
+  font-weight: bold;
+  margin-right: 5px;
 }
 
 .stickyNoteFooter h6{
@@ -219,4 +224,7 @@ button{
 }
 .buttons button{
   margin-right: 25px;
+}
+.thumbsUp{
+  cursor: pointer;
 }

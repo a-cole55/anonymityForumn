@@ -8,6 +8,10 @@ const postSchema = new mongoose.Schema({
     postDescription: {
         type: String,
         required: true
+    },
+    like: {
+        type: Number,
+        required:true
     }
 });
 const PostModel = mongoose.model('posts', postSchema)

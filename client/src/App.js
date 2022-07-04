@@ -6,6 +6,17 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 function App() {
   const [openModal, setOpenModal] = useState(false);
   const [listOfPosts, setListofPosts] = useState([]);
+  const [like, setLike] = useState(0);
+
+  const updateLikes = (id, like) => {
+    const newLike = like + 1;
+    // alert(id, newLike)
+    Axios.put("http://localhost:4000/addLike", {newLike: newLike, id: id}).then(() => {
+      setListofPosts(listOfPosts.map((val) => {
+        return val._id === id ? {_id: id, name: val.name, postDescription: val.postDescription, like: newLike} : val
+      }))
+    });
+  };
 
   useEffect(() => {
     Axios.get("http://localhost:4000/read", {
@@ -29,7 +40,7 @@ function App() {
             }}>
               New Post</button>
           </div>
-        {openModal && <NewPost closeModal={setOpenModal} postsList = {[listOfPosts, setListofPosts]}/>}
+        {openModal && <NewPost closeModal={setOpenModal} postsList = {[listOfPosts, setListofPosts]} likeCount = {[like, setLike]}/>}
       <div className="posts" >
         {listOfPosts.map((val, index) => {
           return <div className="stickyNotes" key= {val._id}>  
@@ -37,7 +48,9 @@ function App() {
             <p>{val.postDescription}</p>
             <h3>-{val.name}</h3>
             <div className="stickyNoteFooter">
-            <ThumbUpIcon color="default" fontSize="small"/>
+            <span>{val.like}</span>
+            <ThumbUpIcon className="thumbsUp" color="default" fontSize="small" 
+            onClick= {() => {updateLikes(val._id, val.like)}}/>
             </div>
           </div>
       })}

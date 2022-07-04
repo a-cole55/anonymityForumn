@@ -2,9 +2,10 @@ import { useState } from "react";
 import Axios from 'axios';
 import CloseIcon from '@mui/icons-material/Close';
 
-export default function NewPost({ closeModal, postsList}){
+export default function NewPost({ closeModal, postsList, likeCount}){
     const [description, setDescription] = useState("");
     const [name, setName] = useState("");
+    const like = likeCount[0]
 
     function handleChange(event){
       setDescription(event.target.value)
@@ -23,8 +24,9 @@ export default function NewPost({ closeModal, postsList}){
       await Axios.post("http://localhost:4000/addPost", {
         name: name, 
         description: description,
-      }).then(()=> {
-        postsList[1]([...postsList[0], { name: name, postDescription: description}]);
+        like: like,
+      }).then((response)=> {
+        postsList[1]([...postsList[0], { _id: response.data._id ,name: name, postDescription: description, like: like}]);
       })
       .catch(() => {
         console.error()
