@@ -59,7 +59,7 @@ export default function NewPost({ closeModal, postsList}){
             />
       </div>
       <div className="buttons">
-        <button type="submit" disabled={Boolean(description === "")} onClick={addPost}>Submit</button>
+        <button type="submit" disabled={Boolean(!description)} onClick={addPost}>Submit</button>
         <button type="button" onClick={clearInput}>Clear</button>
       </div>
     </div>
