@@ -6,10 +6,13 @@ export default function NewPost({ closeModal, postsList}){
     const [description, setDescription] = useState("");
     const [name, setName] = useState("");
 
+    function handleChange(event){
+      setDescription(event.target.value)
+    }
+
     const clearInput = (e) => {
         e.preventDefault();
         // empty inputs
-        // setTitle("");
         setName("");
         setDescription("")
     };
@@ -44,9 +47,7 @@ export default function NewPost({ closeModal, postsList}){
             type= "text"
             value={description}
             placeholder="Write your text here" 
-            onChange={(event) => {
-              setDescription(event.target.value);
-            }}
+            onChange={handleChange}
             />
           <input 
             type= "text" 
@@ -58,10 +59,10 @@ export default function NewPost({ closeModal, postsList}){
             />
       </div>
       <div className="buttons">
-      <button type="submit" onClick={addPost}>Submit</button>
-      <button type="button" onClick={clearInput}>Clear</button>
+        <button type="submit" disabled={Boolean(description === "")} onClick={addPost}>Submit</button>
+        <button type="button" onClick={clearInput}>Clear</button>
       </div>
-      </div>
-      </div>
+    </div>
+    </div>
     )
 }

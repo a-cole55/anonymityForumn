@@ -11,6 +11,7 @@ function App() {
     Axios.get("http://localhost:4000/read", {
     }).then((response)=> {
       setListofPosts(response.data)
+      console.log(response.data)
     })
     .catch(() => {
       console.error()
@@ -30,14 +31,15 @@ function App() {
           </div>
         {openModal && <NewPost closeModal={setOpenModal} postsList = {[listOfPosts, setListofPosts]}/>}
       <div className="posts" >
-        {listOfPosts.map((val) => {
-          return <div className="stickyNotes">  
+        {listOfPosts.map((val, index) => {
+          return <div className="stickyNotes" key= {val._id}>  
+            {console.log(val._id)}
             <p>{val.postDescription}</p>
             <h3>-{val.name}</h3>
             <div className="stickyNoteFooter">
             <ThumbUpIcon color="default" fontSize="small"/>
             </div>
-            </div>
+          </div>
       })}
       </div>
     </div>
