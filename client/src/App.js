@@ -4,10 +4,11 @@ import NewPost from "./components/Post";
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-function App(newPost) {
+function App() {
   const [openModal, setOpenModal] = useState(false);
   const [listOfPosts, setListofPosts] = useState([]);
   const [like, setLike] = useState(0);
+  const [newPostId, setNewPostId] = useState("");
 
   const updateLikes = (id, like) => {
     const newLike = like + 1;
@@ -51,7 +52,7 @@ function App(newPost) {
             }}>
               New Post</button>
           </div>
-        {openModal && <NewPost closeModal={setOpenModal} postsList = {[listOfPosts, setListofPosts]} likeCount = {[like, setLike]}/>}
+        {openModal && <NewPost closeModal={setOpenModal} postsList = {[listOfPosts, setListofPosts]} likeCount = {[like, setLike]} newPostId = {setNewPostId}/>}
       <div className="posts" >
         {listOfPosts.map((val, index) => {
           return <div className="stickyNotes" key= {val._id}>  
@@ -59,8 +60,8 @@ function App(newPost) {
             <p>{val.postDescription}</p>
             <h3>-{val.name}</h3>
             <div className="stickyNoteFooter">
-            {/* if id = val.id then delete? button show, else button disable/don't show */}
-            {listOfPosts.length -1 === index && <DeleteIcon className="actions" onClick= {() => {deletePost(val._id)}}/>}
+            {/* display trash button to delete users current post only by tracking id*/}
+            {val._id === newPostId && <DeleteIcon className="actions" onClick= {() => {deletePost(val._id)}}/>}
             <div>
               <span>{val.like}</span>
               <ThumbUpIcon className="actions" color="default" fontSize="small" 
