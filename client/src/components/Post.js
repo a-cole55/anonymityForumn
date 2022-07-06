@@ -54,7 +54,7 @@ export default function NewPost({ closeModal, postsList, likeCount, newPostId}){
           <input 
             type= "text" 
             value={name}
-            placeholder="Anon Name **Not Required**" 
+            placeholder="Screen Name **Not Required**" 
             onChange={(event) => {
               setName(event.target.value);
             }}
