@@ -26,7 +26,9 @@ export default function NewPost({ closeModal, postsList, likeCount}){
         description: description,
         like: like,
       }).then((response)=> {
-        postsList[1]([...postsList[0], { _id: response.data._id ,name: name, postDescription: description, like: like}]);
+        postsList[1]([...postsList[0], { _id: response.data._id, name: name, postDescription: description, like: like}]);
+        // const newPost = response.data._id;
+        // return newPost
       })
       .catch(() => {
         console.error()

@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import Axios from 'axios';
 import NewPost from "./components/Post";
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import DeleteIcon from '@mui/icons-material/Delete';
 
-function App() {
+function App(newPost) {
   const [openModal, setOpenModal] = useState(false);
   const [listOfPosts, setListofPosts] = useState([]);
   const [like, setLike] = useState(0);
@@ -17,6 +18,16 @@ function App() {
       }))
     });
   };
+
+  const deletePost = (id) => {
+    Axios.delete(`http://localhost:4000/delete/${id}`).then(() => {
+      setListofPosts(
+        listOfPosts.filter((val) => {
+          return val._id !== id;
+        })
+      )
+    })
+  }
 
   useEffect(() => {
     Axios.get("http://localhost:4000/read", {
@@ -48,9 +59,13 @@ function App() {
             <p>{val.postDescription}</p>
             <h3>-{val.name}</h3>
             <div className="stickyNoteFooter">
-            <span>{val.like}</span>
-            <ThumbUpIcon className="thumbsUp" color="default" fontSize="small" 
-            onClick= {() => {updateLikes(val._id, val.like)}}/>
+            {/* if id = val.id then delete? button show, else button disable/don't show */}
+            {listOfPosts.length -1 === index && <DeleteIcon className="actions" onClick= {() => {deletePost(val._id)}}/>}
+            <div>
+              <span>{val.like}</span>
+              <ThumbUpIcon className="actions" color="default" fontSize="small" 
+              onClick= {() => {updateLikes(val._id, val.like)}}/>
+            </div>
             </div>
           </div>
       })}

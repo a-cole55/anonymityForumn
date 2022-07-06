@@ -53,6 +53,11 @@ app.put("/addLike", async (req, res) => {
     
     res.send("updated");
 });
+app.delete('/delete/:id', async (req, res) => {
+    const id = req.params.id
+    await PostModel.findByIdAndDelete(id).exec()
+    res.send('itemDeleted')
+})
 
 app.listen(4000, () => {
     console.log("running on port 4000")
