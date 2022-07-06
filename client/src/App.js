@@ -13,7 +13,7 @@ function App() {
   const updateLikes = (id, like) => {
     const newLike = like + 1;
 
-    Axios.put("http://localhost:4000/addLike", {newLike: newLike, id: id}).then(() => {
+    Axios.put("https://anonymityforumn.herokuapp.com/addLike", {newLike: newLike, id: id}).then(() => {
       setListofPosts(listOfPosts.map((val) => {
         return val._id === id ? {_id: id, name: val.name, postDescription: val.postDescription, like: newLike} : val
       }))
@@ -21,7 +21,7 @@ function App() {
   };
 
   const deletePost = (id) => {
-    Axios.delete(`http://localhost:4000/delete/${id}`).then(() => {
+    Axios.delete(`https://anonymityforumn.herokuapp.com/delete/${id}`).then(() => {
       setListofPosts(
         listOfPosts.filter((val) => {
           return val._id !== id;
@@ -31,7 +31,7 @@ function App() {
   }
 
   useEffect(() => {
-    Axios.get("http://localhost:4000/read", {
+    Axios.get("https://anonymityforumn.herokuapp.com/read", {
     }).then((response)=> {
       setListofPosts(response.data)
       console.log(response.data)

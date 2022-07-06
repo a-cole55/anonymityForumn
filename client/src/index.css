@@ -167,6 +167,7 @@ button{
   background-color:#9cffcf;
   font: bold 1.2rem 'Lato';
   text-transform: uppercase;
+  color:black;
 }
 
 .modalBG{
@@ -224,7 +225,33 @@ button{
 }
 .buttons button{
   margin-right: 25px;
+  background-color:#9cffcf;
+  font: 1.3rem 'Reenie Beanie';
+  font-weight: bold;
+  color: black;
 }
 .actions{
   cursor: pointer;
+}
+@media screen and (max-width:500px) {
+  body{
+    margin-top: 5%;
+  }
+  .stickyNotes{
+    margin:2em;
+    width:70%;
+    height: 16em;
+  }
+  .addPost{
+    width:25em;
+    height: 16em;
+    margin:1%;
+    padding:5%;
+
+  }
+  .modalContainer {
+    width:460px;
+    height: 550px;
+  }
+
 }

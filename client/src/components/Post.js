@@ -21,7 +21,7 @@ export default function NewPost({ closeModal, postsList, likeCount, newPostId}){
 
     const addPost = async () => {
         
-      await Axios.post("http://localhost:4000/addPost", {
+      await Axios.post("https://anonymityforumn.herokuapp.com/addPost", {
         name: name, 
         description: description,
         like: like,
