@@ -45,8 +45,8 @@ p {
 }
 .stickyNotes{
   margin:2em;
-  width:28%;
-  height: 16em;
+  min-width:28%;
+  min-height: 16em;
   text-align: center;
   color:#000;
   background:#ffc;
@@ -233,7 +233,29 @@ button{
 .actions{
   cursor: pointer;
 }
-@media screen and (max-width:500px) {
+
+@media screen and (max-width:1180px) {
+  .stickyNotes{
+    margin:2em;
+    width:40%;
+    height: 16em;
+  }
+  .addPost{
+    width:28em;
+    height: 16em;
+    margin:1%;
+    padding:5%;
+
+  }
+  .modalContainer {
+    width:560px;
+    height: 550px;
+  }
+
+}
+
+
+@media screen and (max-width:800px) {
   body{
     margin-top: 5%;
   }
@@ -242,6 +264,22 @@ button{
     width:70%;
     height: 16em;
   }
+  .addPost{
+    width:28em;
+    height: 16em;
+    margin:1%;
+    padding:5%;
+
+  }
+  .modalContainer {
+    width:560px;
+    height: 550px;
+  }
+
+}
+
+
+@media screen and (max-width:500px) {
   .addPost{
     width:25em;
     height: 16em;
